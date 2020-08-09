@@ -1,3 +1,15 @@
 .profile__btn_action_add {
-  height: 100%;
+  background-image: url('../../../../images/Add Button.svg');
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 150px;
+  background-size: auto;
+  /* object-fit: contain; */
+}
+
+@media screen and (max-width: 768px) {
+  .profile__btn_action_add {
+    width: 282px;
+    height: 50px;
+  }
 }

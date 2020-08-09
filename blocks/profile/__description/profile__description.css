@@ -3,3 +3,12 @@
   font-size: 18px;
   line-height: 22px;
 }
+
+@media screen and (max-width: 768px) {
+  .profile__description {
+    margin: 0;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }  
+}
