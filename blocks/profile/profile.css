@@ -1,0 +1,7 @@
+@import url('__info/profile__info.css');
+@import url('__btn/profile__btn.css');
+@import url('__avatar/profile__avatar.css');
+
+.profile {
+  display: flex;
+}

@@ -1,5 +1,5 @@
 .page__header {
-  max-width: 882px;
+  width: 100%;
   margin: 45px auto 40px;
   min-height: 74px;
 }
