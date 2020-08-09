@@ -3,4 +3,6 @@
 
 .profile__btn {
   display: flex;
+  border: none;
+  background-color: transparent;
 }
