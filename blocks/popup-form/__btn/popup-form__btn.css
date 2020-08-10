@@ -1,0 +1,7 @@
+@import url('_action/popup-form__btn_action_save.css');
+
+
+.popup-form__btn {
+  width: 100%;
+  border-width: 0;
+}

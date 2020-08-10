@@ -1,0 +1,10 @@
+.popup-form__btn_action_save {
+  margin: 48px 0 0;
+  background-color: black;
+  color: white;
+  min-height: 50px;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  padding: 0;
+}
