@@ -4,6 +4,7 @@
 
 .popup-form {
   color: black;
+  position: relative;
   width: 430px;
   height: 330px;
   margin: 195px auto;
