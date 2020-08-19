@@ -7,6 +7,7 @@
 @import url("../blocks/card/card.css");
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/popup/popup.css");
+@import url('../blocks/popup/popup_opened.css');
 @import url("../blocks/popup-form/popup-form.css");
 @import url("../blocks/close-icon/close-icon.css");
 

@@ -1,15 +1,19 @@
 .profile__btn_action_add {
-  background-image: url('../../../../images/Add Button.svg');
-  background-repeat: no-repeat;
-  height: 50px;
-  width: 150px;
-  background-size: auto;
-  /* object-fit: contain; */
+    background-image: url('../../../../images/Add Button.svg');
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 150px;
+    padding: 0;
+    align-self: flex-end;
+    background-size: 100% 50px;
+    grid-area: button_add;
 }
 
 @media screen and (max-width: 768px) {
-  .profile__btn_action_add {
-    width: 282px;
-    height: 50px;
-  }
+    .profile__btn_action_add {
+        background-image: url('../../../../images/Add Button_2.png');
+        width: 282px;
+        height: 50px;
+        align-self: center;
+    }
 }

@@ -1,8 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\blocks"
+    "\\blocks",
+    "\\blocks\\profile",
+    "\\blocks\\profile\\__btn",
+    "\\blocks\\profile\\__btn\\_action",
+    "\\images",
+    "\\scripts"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\images",
   "PreviewInSolutionExplorer": false
 }

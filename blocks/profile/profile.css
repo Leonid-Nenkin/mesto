@@ -6,13 +6,18 @@
 @import url('__container/profile__container.css');
 
 .profile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: grid;
+    grid-template-columns: 120px 1fr 150px;
+    grid-template-rows: 70px 50px;
+    grid-template-areas: 
+        "avatar info button_add" 
+        "avatar description .";
 }
 
 @media screen and (max-width: 768px) {
-  .profile {
-    flex-direction: column;
-  }
+    .profile {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
 }

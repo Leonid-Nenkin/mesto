@@ -1,14 +1,17 @@
 .profile__description {
-  margin: 0;
-  font-size: 18px;
-  line-height: 22px;
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
+    grid-area: description;
+    margin-left: 30px;
 }
 
 @media screen and (max-width: 768px) {
-  .profile__description {
-    margin: 0;
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
-  }  
+    .profile__description {
+        margin: 0;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        margin-bottom: 36px;
+    }  
 }
