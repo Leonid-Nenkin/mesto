@@ -4,3 +4,10 @@
   right: -45px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 550px) {
+	.close-icon {
+		right: 0;
+		top: -50px;
+	}
+}

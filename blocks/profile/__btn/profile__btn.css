@@ -6,3 +6,7 @@
   border: none;
   background-color: transparent;
 }
+
+.profile__btn:hover {
+    opacity: 0.8;
+}

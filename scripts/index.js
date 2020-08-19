@@ -24,14 +24,23 @@ let formCloseButton = document.querySelector('.close-icon');
     // Вставьте новые значения с помощью textContent
         ProfileName.textContent = name;
         ProfileDesc.textContent = job;
+		openCloseFormHandler(evt);
+}
+
+function initForm() {
+    let name = document.querySelector('.profile__name').textContent;
+    let job = document.querySelector('.profile__description').textContent;
+    formElement.querySelector('.popup-form__text_type_name').value = name;
+    formElement.querySelector('.popup-form__text_type_description').value = job;
 }
 
 function openCloseFormHandler(evt) {
     evt.preventDefault();
+    initForm()
     let editForm = document.querySelector('.popup');
-    
     editForm.classList.toggle('popup_opened');
 }
+
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
