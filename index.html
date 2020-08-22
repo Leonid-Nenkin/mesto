@@ -9,24 +9,27 @@
 </head>
     <body class="page">
         <section class="popup">
-            <form class="popup-form">
-                <img class="close-icon profile__btn" src="images/Close_Icon.svg" alt="закрыть"/>
-                <h3 class="popup-form__header">Редактировать профиль</h3>
-                <input type="text" class="popup-form__text popup-form__text_type_name">
-                <input type="text" class="popup-form__text popup-form__text_type_description">
-                <button type="submit" class="popup-form__btn popup-form__btn_action_save">Сохранить</button>
-            </form>
+            <div class="popup__container">
+                <button class="popup__btn popup__btn_action_close" type="button"></button>
+                <h3 class="popup__header">Редактировать профиль</h3>
+                <form class="popup__form" name="popupform">
+                    <input type="text" class="popup__text-field popup__text-field_type_name" name="username">
+                    <input type="text" class="popup__text-field popup__text-field_type_description" name="userdesc">
+                </form>
+                <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
+            </div>
         </section>
 
         <div class="page__container">
             <header class="page__header header">
                 <img class="header__logo" src='images/logo.svg' alt = "лого" />
+                <div class="header__line"></div>
             </header>
 
             <main class="content">
                 <section class="profile page__profile">
 
-                    <img class="profile__avatar" src='images/avatar.svg' alt = "аватар" />
+                    <img class="profile__avatar" src='images/avatar.png' alt = "аватар" />
                     <div class="profile__info">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <button class="profile__btn profile__btn_action_edit"></button>
@@ -45,7 +48,7 @@
                                 <img class="card__image" src='images/karachaevsk.png' alt='Карачаевск' />
                                 <div class="card__body">
                                     <p class="card__text">Карачаевск</p>
-                                    <img src="images/Like.svg" alt="лайк" />
+                                    <button class="card__like"></button>
                                 </div>
                             </div>
                         </li>
@@ -55,7 +58,7 @@
                                 <img class="card__image" src='images/elbrus.png' alt='Эльбрус' />
                                 <div class="card__body">
                                     <p class="card__text">Эльбрус</p>
-                                    <img src="images/Like.svg" alt="лайк" />
+                                    <button class="card__like"></button>
                                 </div>
                             </div>
                         </li>
@@ -65,7 +68,7 @@
                                 <img class="card__image" src='images/dombai.png' alt='Домбай' />
                                 <div class="card__body">
                                     <p class="card__text">Домбай</p>
-                                    <img src="images/Like.svg" alt="лайк" />
+                                    <button class="card__like"></button>
                                 </div>
                             </div>
                         </li>
@@ -75,7 +78,7 @@
                                 <img class="card__image" src='images/elbrus.png' alt='Эльбрус' />
                                 <div class="card__body">
                                     <p class="card__text">Горв Эльбрус</p>
-                                    <img src="images/Like.svg" alt="лайк" />
+                                    <button class="card__like"></button>
                                 </div>
                             </div>
                         </li>
@@ -85,7 +88,7 @@
                                 <img class="card__image" src='images/dombai.png' alt='Домбай' />
                                 <div class="card__body">
                                     <p class="card__text">Домбай</p>
-                                    <img src="images/Like.svg" alt="лайк" />
+                                    <button class="card__like"></button>
                                 </div>
                             </div>
                         </li>
@@ -95,7 +98,7 @@
                                 <img class="card__image" src='images/karachaevsk.png' alt='Карачаевск' />
                                 <div class="card__body">
                                     <p class="card__text">Карачаево-Черкесия</p>
-                                    <img src="images/Like.svg" alt="лайк" />
+                                    <button class="card__like"></button>
                                 </div>
                             </div>
                         </li>
@@ -104,8 +107,8 @@
                 </section>
             </main>
 
-            <footer class="page__footer footer">
-                <img class="footer__logo" src='images/Trade_Mark.svg' alt='лого'/>
+            <footer class="page__footer">
+                <p class="footer">&copy; 2020 Mesto Russia</p>
             </footer>
 
         </div>

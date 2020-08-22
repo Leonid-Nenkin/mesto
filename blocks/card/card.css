@@ -1,6 +1,7 @@
-@import url('__body/card__body.css');
-@import url('__image/card__image.css');
-@import url('__text/card__text.css');
+@import url("__body/card__body.css");
+@import url("__image/card__image.css");
+@import url("__text/card__text.css");
+@import url("__like/card__like.css");
 
 .card {
     display: flex;

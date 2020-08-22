@@ -1,0 +1,10 @@
+@import url("_action/popup__btn_action_save.css");
+@import url("_action/popuo__btn_action_close.css");
+
+.popup__btn {
+  border: none;
+}
+
+.popup__btn:hover {
+  opacity: 0.8;
+}

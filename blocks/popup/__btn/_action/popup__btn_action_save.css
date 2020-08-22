@@ -1,6 +1,7 @@
-.popup-form__btn_action_save {
-  margin: 48px 0 0;
+.popup__btn_action_save {
+  margin: 48px 0 37px;
   background-color: black;
+  width: 100%;
   color: white;
   min-height: 50px;
   font-size: 18px;

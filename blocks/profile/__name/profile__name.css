@@ -1,8 +1,12 @@
 .profile__name {
+    font-family: "Inter-Medium";
     margin: 0 17px 0 0;
     font-size: 42px;
     font-weight: 500;
     line-height: 56px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     grid-area: name;
 }
 
