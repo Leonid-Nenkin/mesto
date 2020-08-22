@@ -1,9 +1,15 @@
 @import url("__logo/header__logo.css");
-@import url("__line/header__line.css");
 
 .header {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: flex-start;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    position: relative;
+    top:0;
+    left: -20px;
+    width: calc(100% + 40px);
+  }
 }

@@ -1,10 +1,12 @@
 .footer {
   color: #545454;
-  line-height: 18px;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 @media screen and (max-width: 320px) {
   .footer {
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

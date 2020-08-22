@@ -20,7 +20,7 @@
     src: url("../inter/inter-fonts/Inter-Black.woff2?v=3.13") format("woff2"), url("../inter/inter-fonts/Inter-Black.woff?v=3.13") format("woff");
 }
 @font-face {
-    font-family: 'Inter-Medium';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-display: swap;
