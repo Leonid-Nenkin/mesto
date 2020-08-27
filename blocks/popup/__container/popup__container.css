@@ -1,12 +1,16 @@
+@import url('_type/popup__container_card.css');
+@import url('_type/popup__container_form.css');
+
 .popup__container {
   color: black;
   position: relative;
-  width: 430px;
-  margin: 195px auto auto;
-  padding: 36px 36px 0;
-  background-color: rgba(255, 255, 255, 1);
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  box-sizing: border-box;
+  width: 430px;
+}
+
+@media screen and (max-width: 550px) {
+  .popup__container {
+    width: 240px;
+  }
 }

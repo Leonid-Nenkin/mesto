@@ -2,6 +2,7 @@
 @import url("__image/card__image.css");
 @import url("__text/card__text.css");
 @import url("__like/card__like.css");
+@import url("__trashCan/card__trashCan.css");
 
 .card {
     display: flex;

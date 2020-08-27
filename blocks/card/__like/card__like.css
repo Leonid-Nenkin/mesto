@@ -1,5 +1,7 @@
+@import url('_type/card__like_active.css');
+@import url('_type/card__like_inactive.css');
+
 .card__like {
-  background-image: url("../../../images/like.svg");
   background-position: center;
   background-color: transparent;
   width: 22px;
@@ -7,6 +9,7 @@
   border: none;
   background-repeat: no-repeat;
   padding: 0;
+  cursor: pointer;
 }
 
 .card__like:hover {

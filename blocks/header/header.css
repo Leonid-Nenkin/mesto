@@ -11,5 +11,6 @@
     top:0;
     left: -20px;
     width: calc(100% + 40px);
+    z-index: -1;
   }
 }

@@ -9,3 +9,12 @@
   text-align: center;
   padding: 0;
 }
+
+@media screen and (max-width: 550px) {
+  .popup__btn_action_save {
+    margin: 36px 0 30px;
+    min-height: 40px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

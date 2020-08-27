@@ -13,7 +13,9 @@
 
 @media screen and (max-width: 550px) {
 	.popup__btn_action_close {
-		right: 0;
-		top: -50px;
+    width: 30px;
+    height: 30px;
+    top: -30px;
+    right: -30px;
 	}
 }

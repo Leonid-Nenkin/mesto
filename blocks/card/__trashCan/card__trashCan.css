@@ -1,0 +1,14 @@
+.card__trashCan {
+  width: 19px;
+  height: 19px;
+  background-image: url("../../../images/trashCan.svg");
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 18px 15px 0 0;
+  align-self: flex-end;
+}
+
+.card__trashCan:hover {
+  opacity: 0.8;
+}

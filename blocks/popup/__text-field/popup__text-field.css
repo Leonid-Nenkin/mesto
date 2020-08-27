@@ -6,3 +6,10 @@
   font-size: 14px;
   line-height: 17px;
 }
+
+@media screen and (max-width: 550px) {
+	.popup__text-field {
+    font-size: 12px;
+    line-height: 15px;
+	}
+}
