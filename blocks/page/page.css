@@ -3,6 +3,7 @@
 @import url("__profile/page__profile.css");
 @import url("__elements/page__elements.css");
 @import url("__footer/page__footer.css");
+@import url("__popup/page__popup.css");
 
 .page {
   font-family: "Inter", "Arial", sans-serif;
