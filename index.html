@@ -8,38 +8,6 @@
   <link rel="stylesheet"  href="pages/index.css" />
 </head>
     <body class="page">
-        <section class="popup page__popup_edit-form">
-            <div class="popup__container popup__container_form">
-                <button class="popup__btn popup__btn_action_close" type="button"></button>
-                <h3 class="popup__header">Редактировать профиль</h3>
-                <form class="popup__form" name="popupform">
-                    <input type="text" class="popup__text-field popup__text-field_type_name" name="username">
-                    <input type="text" class="popup__text-field popup__text-field_type_description" name="userdesc">
-                    <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
-                </form>
-            </div>
-        </section>
-
-        <section class="popup page__popup_new-place">
-            <div class="popup__container popup__container_form">
-                <button class="popup__btn popup__btn_action_close" type="button"></button>
-                <h3 class="popup__header">Новое место</h3>
-                <form class="popup__form" name="popupform">
-                    <input type="text" class="popup__text-field popup__text-field_type_name" placeholder="Название" name="username">
-                    <input type="text" class="popup__text-field popup__text-field_type_description" placeholder="Ссылка на картинку" name="userdesc">
-                    <button class="popup__btn popup__btn_action_save" type="submit">Создать</button>
-                </form>
-            </div>
-        </section>
-
-        <section class="popup page__popup_card-image">
-            <div class="popup__container popup__container_card">
-                <button class="popup__btn popup__btn_action_close" type="button"></button>
-                <img class="popup__image" alt="картинка" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"/>
-                <p class="popup__caption"></p>
-            </div>
-        </section>
-
         <div class="page__container">
             <header class="page__header header">
                 <img class="header__logo" src='images/logo.svg' alt = "лого" />
@@ -84,6 +52,38 @@
                 </div>
             </li>
         </template>
+
+        <section class="popup page__popup_edit-form">
+            <div class="popup__container popup__container_form">
+                <button class="popup__btn popup__btn_action_close" type="button"></button>
+                <h3 class="popup__header">Редактировать профиль</h3>
+                <form class="popup__form" name="popupform">
+                    <input type="text" class="popup__text-field popup__text-field_type_name" name="username">
+                    <input type="text" class="popup__text-field popup__text-field_type_description" name="userdesc">
+                    <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="popup page__popup_new-place">
+            <div class="popup__container popup__container_form">
+                <button class="popup__btn popup__btn_action_close" type="button"></button>
+                <h3 class="popup__header">Новое место</h3>
+                <form class="popup__form" name="popupform">
+                    <input type="text" class="popup__text-field popup__text-field_type_name" placeholder="Название" name="username">
+                    <input type="text" class="popup__text-field popup__text-field_type_description" placeholder="Ссылка на картинку" name="userdesc">
+                    <button class="popup__btn popup__btn_action_save" type="submit">Создать</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="popup page__popup_card-image">
+            <div class="popup__container popup__container_card">
+                <button class="popup__btn popup__btn_action_close" type="button"></button>
+                <img class="popup__image" alt="картинка" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"/>
+                <p class="popup__caption"></p>
+            </div>
+        </section>
 
         <script src="scripts/cards.js"></script>
         <script src="scripts/index.js"></script>

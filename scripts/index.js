@@ -48,7 +48,6 @@ function showEditProfile() {
 }
 
 function showAddCard() {
-    popupNewPlaceForm.addEventListener('submit', addNewCard);
     togglePopupHandler(popupNewPlaceForm);
 }
 
