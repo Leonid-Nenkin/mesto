@@ -1,0 +1,10 @@
+@import url('_type/popup__input-error_active.css');
+
+.popup__input-error {
+  color: red;
+  font-size: 12px;
+  line-height: 15px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+}

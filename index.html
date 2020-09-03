@@ -54,30 +54,52 @@
         </template>
 
         <section class="popup page__popup_edit-form">
+            <div class="popup__overlay popup__overlay_edit"></div>
             <div class="popup__container popup__container_form">
                 <button class="popup__btn popup__btn_action_close" type="button"></button>
                 <h3 class="popup__header">Редактировать профиль</h3>
-                <form class="popup__form" name="popupform">
-                    <input type="text" class="popup__text-field popup__text-field_type_name" name="username">
-                    <input type="text" class="popup__text-field popup__text-field_type_description" name="userdesc">
-                    <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
+                <form class="popup__form" name="editProfile" novalidate>
+                    <fieldset class="popup__form-set">
+                        <label class="popup__form-field">
+                            <input id="name-input" type="text" class="popup__text-field popup__text-field_name" minlength="2" maxlength="40" name="userName" required>
+                            <span id="name-input-error" class="popup__input-error"></span>
+                        </label>
+
+                        <label class="popup__form-field">
+                            <input id="desc-input" type="text" class="popup__text-field popup__text-field_description" minlength="2" maxlength="200" name="userDescription" required>
+                            <span id="desc-input-error" class="popup__input-error"></span>
+                        </label>
+                        
+                        <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
+                    </fieldset>
                 </form>
             </div>
         </section>
 
         <section class="popup page__popup_new-place">
+            <div class="popup__overlay popup__overlay_new-place"></div>
             <div class="popup__container popup__container_form">
                 <button class="popup__btn popup__btn_action_close" type="button"></button>
                 <h3 class="popup__header">Новое место</h3>
-                <form class="popup__form" name="popupform">
-                    <input type="text" class="popup__text-field popup__text-field_type_name" placeholder="Название" name="username">
-                    <input type="text" class="popup__text-field popup__text-field_type_description" placeholder="Ссылка на картинку" name="userdesc">
-                    <button class="popup__btn popup__btn_action_save" type="submit">Создать</button>
+                <form class="popup__form" name="addNewPlace" novalidate>
+                    <fieldset class="popup__form-set">
+                        <label class="popup__form-field">
+                            <input id="placeName-input" type="text" class="popup__text-field popup__text-field_name" placeholder="Название" minlength="1" maxlength="30" name="placeName" required>
+                            <span id="placeName-input-error" class="popup__input-error"></span>
+                        </label>
+
+                        <label class="popup__form-field">
+                            <input id="link-input" type="url" class="popup__text-field popup__text-field_description" placeholder="Ссылка на картинку" name="placeLink" required>
+                            <span id="link-input-error" class="popup__input-error"></span>
+                        </label>
+                        <button class="popup__btn popup__btn_action_save" type="submit">Создать</button>
+                    </fieldset>
                 </form>
             </div>
         </section>
 
         <section class="popup page__popup_card-image">
+            <div class="popup__overlay popup__overlay_image"></div>
             <div class="popup__container popup__container_card">
                 <button class="popup__btn popup__btn_action_close" type="button"></button>
                 <img class="popup__image" alt="картинка" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"/>

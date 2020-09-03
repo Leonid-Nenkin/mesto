@@ -1,5 +1,6 @@
-@import url("_type/popup__text-field_type_decription.css");
-@import url("_type/popup__text-field_type_name.css");
+@import url("_type/popup__text-field_decription.css");
+@import url("_type/popup__text-field_name.css");
+@import url("_type/popup__text-field_error.css");
 
 .popup__text-field {
   font-family: "Inter", "Arial", sans-serif;
