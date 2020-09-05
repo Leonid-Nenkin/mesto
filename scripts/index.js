@@ -6,6 +6,7 @@ const profileDesc = document.querySelector('.profile__description');
 
 // edit form popup
 const popupEditForm = document.querySelector('.page__popup_edit-form');
+const inputListEdit = Array.from(popupEditForm.querySelectorAll('.popup__text-field'));
 const nameInputEditForm = popupEditForm.querySelector('.popup__text-field_name');
 const jobInputEditForm = popupEditForm.querySelector('.popup__text-field_description');
 const saveButtonEditForm = popupEditForm.querySelector('.popup__btn_action_save');
@@ -14,6 +15,7 @@ const editFormOverlay = document.querySelector('.popup__overlay_edit');
 
 // new place form popup
 const popupNewPlaceForm = document.querySelector('.page__popup_new-place');
+const inputListAddNew = Array.from(popupNewPlaceForm.querySelectorAll('.popup__text-field'));
 const nameInputNewPlaceForm = popupNewPlaceForm.querySelector('.popup__text-field_name');
 const jobInputNewPlaceForm = popupNewPlaceForm.querySelector('.popup__text-field_description');
 const saveButtonNewPlaceForm = popupNewPlaceForm.querySelector('.popup__btn_action_save');
@@ -24,6 +26,8 @@ const newPlaceFormOverlay = document.querySelector('.popup__overlay_new-place');
 const popupImage = document.querySelector('.page__popup_card-image');
 const closeButtonImage = popupImage.querySelector('.popup__btn_action_close');
 const imageOverlay = document.querySelector('.popup__overlay_image');
+const img = popupImage.querySelector('.popup__image');
+const imgCaption = popupImage.querySelector('.popup__caption')
 
 const cardItemTemplate = document.querySelector("#card-item").content;
 const cardsList = document.querySelector('.elements__list');
@@ -39,40 +43,41 @@ function initCardsGrid() {
 function showEditProfile() {
     nameInputEditForm.value =  profileName.textContent;
     jobInputEditForm.value = profileDesc.textContent;
-
-    const inputList = Array.from(popupEditForm.querySelectorAll('.popup__text-field'));
-    const buttonElement = popupEditForm.querySelector('.popup__btn_action_save');
-    inputList.forEach((inputElement)=> {checkInputValidity(popupEditForm, inputElement)});
+    inputListEdit.forEach((inputElement)=> {checkInputValidity(popupEditForm, inputElement)});
     currentVisiblePopup = popupEditForm;
-    toggleButtonState(inputList, buttonElement);
+    document.addEventListener('keydown', handleKeyPress);
+
+    toggleButtonState(inputListEdit, saveButtonEditForm);
     togglePopupHandler(popupEditForm);
 }
 
 function showAddCard() {
-    const inputList = Array.from(popupNewPlaceForm.querySelectorAll('.popup__text-field'));
-    const buttonElement = popupEditForm.querySelector('.popup__btn_action_save');
-    inputList.forEach((inputElement)=> {checkInputValidity(popupNewPlaceForm, inputElement)});
+    inputListAddNew.forEach((inputElement)=> {checkInputValidity(popupNewPlaceForm, inputElement)});
+    document.addEventListener('keydown', handleKeyPress);
     currentVisiblePopup = popupNewPlaceForm;
-    toggleButtonState(inputList, buttonElement);
+    toggleButtonState(inputListAddNew, saveButtonNewPlaceForm);
     togglePopupHandler(popupNewPlaceForm);
 }
 
-function showCard(evt) {
-    const targetCard = evt.target
-    const imageLink = targetCard.style.backgroundImage.slice(4, -1).replace(/"/g, "");
-    const caption = targetCard.parentElement.querySelector('.card__text').textContent;
-    
-    popupImage.querySelector('.popup__image').src = imageLink;
-    popupImage.querySelector('.popup__caption').textContent = caption;
+function showCard(caption, cardImage) {
+    const imageLink = cardImage.style.backgroundImage.split('"')[1];
+    img.src = imageLink;
+    img.alt = caption;
+    imgCaption.textContent = caption;
+    document.addEventListener('keydown', handleKeyPress);
     currentVisiblePopup = popupImage;
+    
     togglePopupHandler(popupImage);
 }
 
 function makeCard(name, link) {
     const cardItem = cardItemTemplate.cloneNode(true);
+    const img = cardItem.querySelector('.card__image')
+    
     cardItem.querySelector('.card__text').textContent = name;
-    cardItem.querySelector('.card__image').style.backgroundImage = "url(" + link + ")";
-    cardItem.querySelector('.card__image').addEventListener('click', showCard);
+    img.style.backgroundImage = "url(" + link + ")";
+    img.addEventListener('click', ()=>showCard(name, img));
+    
     cardItem.querySelector('.card__trashCan').addEventListener('click', deleteCard);
     cardItem.querySelector('.card__like').addEventListener('click', setLike);
     return cardItem
@@ -83,11 +88,10 @@ function togglePopupHandler(popup) {
 }
 
 function setLike(evt) {
-    evt.target.classList.toggle('card__like_inactive');
     evt.target.classList.toggle('card__like_active');
 }
 
-function formSubmitHandler(evt) {
+function handleFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInputEditForm.value;
     profileDesc.textContent = jobInputEditForm.value;
@@ -110,21 +114,29 @@ function deleteCard(evt) {
 
 function close(evt) {
     currentVisiblePopup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', handleKeyPress);
 }
 
-function keyHandler(evt) {
+function handleKeyPress(evt) {
     if (evt.key==="Escape") {
         close(evt);
     }
 }
 
 initCardsGrid();
-enableValidation();
+enableValidation(
+    { formSelector: '.popup__form',
+    inputSelector: '.popup__form-set',
+    submitButtonSelector: '.popup__btn',
+    inactiveButtonClass: 'popup__btn_inactive',
+    inputErrorClass: 'popup__text-field_error',
+    errorClass: 'popup__input-error_active'});
+
 editButton.addEventListener('click', showEditProfile);
 addButton.addEventListener('click', showAddCard);
 
 // edit form events
-popupEditForm.addEventListener('submit', formSubmitHandler);
+popupEditForm.addEventListener('submit', handleFormSubmit);
 closeButtonEditForm.addEventListener('click', function() {togglePopupHandler(popupEditForm)});
 editFormOverlay.addEventListener('mouseup', close);
 
@@ -134,8 +146,5 @@ closeButtonNewPlaceForm.addEventListener('click', function() {togglePopupHandler
 newPlaceFormOverlay.addEventListener('mouseup', close);
 
 // place image events
-popupImage.addEventListener('keydown', keyHandler);
-closeButtonImage.addEventListener('click', function() {togglePopupHandler(popupEditForm)});
+closeButtonImage.addEventListener('click', function() {togglePopupHandler(popupImage)});
 imageOverlay.addEventListener('mouseup', close);
-
-document.addEventListener('keydown', keyHandler);

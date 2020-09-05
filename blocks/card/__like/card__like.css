@@ -1,5 +1,5 @@
-@import url('_type/card__like_active.css');
 @import url('_type/card__like_inactive.css');
+@import url('_type/card__like_active.css');
 
 .card__like {
   background-position: center;
