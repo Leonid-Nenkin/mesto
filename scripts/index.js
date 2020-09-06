@@ -42,7 +42,6 @@ function initCardsGrid() {
 function showEditProfile() {
     nameInputEditForm.value =  profileName.textContent;
     jobInputEditForm.value = profileDesc.textContent;
-    document.addEventListener('keydown', ()=>handleKeyPress(event, popupEditForm));
     toggleButtonState(inputListEdit, saveButtonEditForm, 'popup__btn_inactive');
     openPopupHandler(popupEditForm);
 }
@@ -75,11 +74,12 @@ function makeCard(name, link) {
 
 function openPopupHandler(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', handleKeyPress);
 }
 
 function closePopupHandler(popup) {
-    document.removeEventListener('keydown', handleKeyPress);
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', handleKeyPress);
 }
 
 function setLike(evt) {
@@ -107,8 +107,9 @@ function deleteCard(evt) {
     evt.target.closest('.elements__item').remove();
 }
 
-function handleKeyPress(evt, form) {
+function handleKeyPress(evt) {
     if (evt.key==="Escape") {
+        const form = document.querySelector('.popup_opened');
         closePopupHandler(form);
     }
 }
