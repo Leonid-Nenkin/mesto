@@ -107,8 +107,8 @@ function deleteCard(evt) {
 
 function handleKeyPress(evt) {
     if (evt.key==="Escape") {
-        const form = document.querySelector('.popup_opened');
-        closePopupHandler(form);
+        const modal = document.querySelector('.popup_opened');
+        closePopupHandler(modal);
     }
 }
 
