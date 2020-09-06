@@ -47,7 +47,6 @@ function showEditProfile() {
 }
 
 function showAddCard() {
-    document.addEventListener('keydown', ()=>handleKeyPress(event, popupNewPlaceForm));
     openPopupHandler(popupNewPlaceForm);
 }
 
@@ -55,7 +54,6 @@ function showCard(caption, imageLink) {
     img.src = imageLink;
     img.alt = caption;
     imgCaption.textContent = caption;
-    document.addEventListener('keydown', ()=>handleKeyPress(event, popupImage));
     openPopupHandler(popupImage);
 }
 
