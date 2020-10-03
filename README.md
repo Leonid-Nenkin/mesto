@@ -21,3 +21,8 @@
 
 **Ссылка на проект**
 https://leonid-nenkin.github.io/mesto/index.html
+
+**Технологии**
+В проекте используются технологии:
+  - HTML/CSS
+  - JavaScript
