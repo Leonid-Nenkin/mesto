@@ -1,10 +1,9 @@
-import {handleKeyPress} from './index.js';
-
 export default class Card {
-    constructor (data, cardSelector) {
+    constructor (data, cardSelector, handleCardClick) {
         this._text = data.text;
         this._image= data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getCardTemplate() {
@@ -44,17 +43,6 @@ export default class Card {
     }
 
     _handleImageClick() {
-        const popupReference = document.querySelector('.page__popup_card-image');
-        const img = popupReference.querySelector('.popup__image');
-        
-        img.src = this._image;
-        img.alt = this._text;
-        popupReference.querySelector('.popup__caption').textContent = this._text;
-        this._openPopupHandler(popupReference);
-    }
-
-    _openPopupHandler(popup) {
-        popup.classList.add('popup_opened');
-        document.addEventListener('keydown', handleKeyPress);
+        this._handleCardClick();
     }
 }
