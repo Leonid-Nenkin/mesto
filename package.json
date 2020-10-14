@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && webpack",
-    "dev": "npm i webpack --save-dev"
+    "dev": "webpack serve"
   },
   "repository": {
     "type": "git",
