@@ -9,6 +9,7 @@ import {initialCards, editButton, addButton, profileName,
         cardTemplateSelector, popupImageSelector,popupEditFormSelector, popupNewPlaceFormSelector,
         profileNameSelector, profileDescSelector, popupOpenClass} from '../utils/constants.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import '../../pages/index.css';
 
 const cardsGrid = new Section({
     items: initialCards,
@@ -59,47 +60,6 @@ export function showAddCard() {
     popup.setEventListeners();
 }
 
-// function initCardsGrid() {    
-//     initialCards.forEach(function(item) {
-//         const data = {'text':item['name'], 'link':item['link']};
-//         const newCard = makeCard(data);
-//         cardsList.appendChild(newCard.generateCard());
-//     })
-// }
-
-// function makeCard(data) {
-//     return new Card(data, '#card-item');
-// }
-
-// export function openPopupHandler(popup) {
-//     popup.classList.add('popup_opened');
-//     document.addEventListener('keydown', handleKeyPress);
-// }
-
-// export function handleFormSubmit(evt) {
-//     evt.preventDefault();
-//     profileName.textContent = nameInputEditForm.value;
-//     profileDesc.textContent = jobInputEditForm.value;
-//     closePopupHandler(popupEditForm);
-// }
-
-// function addNewCard(evt) {
-//     evt.preventDefault();
-//     const data = {};
-//     data.text = nameInputNewPlaceForm.value;
-//     data.link = jobInputNewPlaceForm.value;
-//     const newCard = makeCard(data);
-//     cardsList.prepend(newCard.generateCard());
-//     closePopupHandler(popupNewPlaceForm);
-// }
-
-// export function handleKeyPress(evt) {
-//     if (evt.key==="Escape") {
-//         const modal = document.querySelector('.popup_opened');
-//         closePopupHandler(modal);
-//     }
-// }
-
 function initValidation() {
     const validationObj = { submitButtonSelector: '.popup__btn',
                             inactiveButtonClass: 'popup__btn_inactive',
@@ -122,23 +82,7 @@ function initValidation() {
 }
 
 cardsGrid.renderItems();
-
-//initCardsGrid();
 initValidation();
 
 editButton.addEventListener('click', showEditProfile);
 addButton.addEventListener('click', showAddCard);
-
-// edit form events
-//popupEditForm.addEventListener('submit', handleFormSubmit);
-//closeButtonEditForm.addEventListener('click', function() {closePopupHandler(popupEditForm)});
-//editFormOverlay.addEventListener('mouseup', function() {closePopupHandler(popupEditForm)});
-
-// new place events
-// popupNewPlaceForm.addEventListener('submit', addNewCard);
-// closeButtonNewPlaceForm.addEventListener('click', function() {closePopupHandler(popupNewPlaceForm)});
-// newPlaceFormOverlay.addEventListener('mouseup', function() {closePopupHandler(popupNewPlaceForm)});
-
-// place image events
-//closeButtonImage.addEventListener('click', function() {closePopupHandler(popupImage)});
-//imageOverlay.addEventListener('mouseup', function() {closePopupHandler(popupImage)});
