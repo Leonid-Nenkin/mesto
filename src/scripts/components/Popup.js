@@ -3,29 +3,30 @@ import {popupCloseButtonSelector, popupOverlaySelector, popupOpenClass} from '..
 export default class Popup {
   constructor (cardSelector) {
     this._cardSelector = cardSelector;
+    this._element = this._getTemplate();
+    this._closeButton = this._element.querySelector(popupCloseButtonSelector);
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
   _getTemplate() {
     const template = document.querySelector(this._cardSelector);
-    this._closeButton = template.querySelector(popupCloseButtonSelector);
-    this._closeButton.addEventListener("click", () => {this.close()});
     return template;
   }
 
   _handleEscClose(evt) {
     if (evt.key==="Escape") {
-      document.querySelector('.popup_opened').classList.remove(popupOpenClass);
+      this.close();
     }
   }
 
   open() {
-    this._element = this._getTemplate();
     this._element.classList.add(popupOpenClass);
     document.addEventListener('keydown', this._handleEscClose);
   }
 
   close() {
     this._element.classList.remove(popupOpenClass);
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 
   setEventListeners() {

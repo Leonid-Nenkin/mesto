@@ -24,6 +24,11 @@ export const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+export const validationObj = { submitButtonSelector: '.popup__btn',
+                            inactiveButtonClass: 'popup__btn_inactive',
+                            inputErrorClass: 'popup__text-field_error',
+                            errorClass: 'popup__input-error_active',
+                            textFieldSelector:'.popup__text-field'};
 
 export const editButton = document.querySelector('.profile__btn_action_edit');
 export const addButton = document.querySelector('.profile__btn_action_add');
@@ -62,9 +67,12 @@ export const imagePopupCaption = '.popup__caption';
 export const popupOverlaySelector = '.popup__overlay';
 export const profileNameSelector = '.profile__name';
 export const profileDescSelector = '.profile__description';
+export const formFieldSelector = '.popup__form-field';
+export const inputFieldSelector = '.popup__text-field';
 
 export const formProfileNameSelector = '.popup__text-field_name';
 export const formProfileDescSelector = '.popup__text-field_description';
 export const formSubmitButton = '.popup__btn_action_save';
 
 export const popupOpenClass = 'popup_opened';
+export const formSubmitButtonInactiveClass = 'popup__btn_inactive';

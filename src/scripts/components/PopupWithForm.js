@@ -1,30 +1,35 @@
 import Popup from './Popup.js';
-import {formProfileNameSelector, formProfileDescSelector, formSubmitButton} from '../utils/constants.js';
+import {formProfileNameSelector, formProfileDescSelector, formSubmitButton,
+   inputFieldSelector, formFieldSelector} from '../utils/constants.js';
 
 export default class PopupWithForm extends Popup {
   constructor(cardSelector, submitCallBack) {
     super(cardSelector);
     this._submitCallBack = submitCallBack;
+    this._submitButton = formSubmitButton;
   }
 
-  setFieldsValues(first, second) {
-    this._element.querySelector(formProfileNameSelector).value = first;
-    this._element.querySelector(formProfileDescSelector).value = second;
-    
+  setFieldsValues(data) {
+    this._element.querySelectorAll(formFieldSelector).forEach((item, i)=>{
+      item.querySelector(inputFieldSelector).value= data[i];
+    });
+
     const inputEvent = new Event('input');
-    this._element.querySelector(formProfileNameSelector).dispatchEvent(inputEvent);
+    this._element.querySelector(formProfileNameSelector).dispatchEvent(inputEvent); 
     this._element.querySelector(formProfileDescSelector).dispatchEvent(inputEvent);
   }
 
   _getInputValues() {
-    const data = {"firstField": this._element.querySelector(formProfileNameSelector).textContent,
-                  "secondField": this._element.querySelector(formProfileDescSelector).textContent};
+    const data = [];
+    this._element.querySelectorAll(formFieldSelector).forEach((item, i)=>{
+      data[i] = item.querySelector(inputFieldSelector).value;
+    });
     return data;
   }
 
   setEventListeners(){
     super.setEventListeners();
-    this._element.querySelector(formSubmitButton).addEventListener("click", this._submitCallBack);
+    this._element.addEventListener("submit", this._submitCallBack);
   }
 
   open() {

@@ -20,8 +20,10 @@ export default class Card {
         this._element = this._getCardTemplate();
         this._setEventListeners();
 
-        this._element.querySelector('.card__image').style.backgroundImage = "url(" + this._image + ")";
+        const cardImage = this._element.querySelector('.card__image');
+        cardImage.style.backgroundImage = "url(" + this._image + ")";
         this._element.querySelector('.card__text').textContent = this._text;
+        cardImage.alt = this._text;
 
         return this._element;
     }

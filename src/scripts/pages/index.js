@@ -7,37 +7,60 @@ import {initialCards, editButton, addButton, profileName,
         profileDesc, nameInputEditForm, jobInputEditForm, 
         nameInputNewPlaceForm,jobInputNewPlaceForm, cardsList, cardsListSelector,
         cardTemplateSelector, popupImageSelector,popupEditFormSelector, popupNewPlaceFormSelector,
-        profileNameSelector, profileDescSelector, popupOpenClass} from '../utils/constants.js';
+        profileNameSelector, profileDescSelector, validationObj} from '../utils/constants.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import '../../pages/index.css';
+
+const popupImage = new PopupWithImage(popupImageSelector);
+popupImage.setEventListeners();
+
+const popupEditForm = new PopupWithForm(popupEditFormSelector, handleEditFormSubmit);
+popupEditForm.setEventListeners();
+const userPage = new UserInfo(profileNameSelector, profileDescSelector);
+
+const popupNewForm = new PopupWithForm(popupNewPlaceFormSelector, addNewCardSubmit);
+popupNewForm.setEventListeners();
+
+const formList = Array.from(document.querySelectorAll('.popup__form'));
+
+const editFormFields = Array.from(document.querySelector('.page__popup_edit-form').querySelectorAll('.popup__form-set'));
+editFormFields.forEach((fieldset)=>{
+        const validElem = new FormValidator(validationObj, fieldset)
+        validElem.enableValidation();
+    });
+
+const newFormFields = Array.from(document.querySelector('.page__popup_new-place').querySelectorAll('.popup__form-set'));
+newFormFields.forEach((fieldset)=>{
+        const validElem = new FormValidator(validationObj, fieldset)
+        validElem.enableValidation();
+    });
 
 const cardsGrid = new Section({
     items: initialCards,
     renderer: (item)=>{
         const data = {'text': item['name'], 'link':item['link']};
-        const card = new Card(data, cardTemplateSelector, ()=>{
-            const popup = new PopupWithImage(popupImageSelector);
-            popup.open(data);
-            popup.setEventListeners();
-        });
+        const card = createCard(data, cardTemplateSelector, ()=>{
+                popupImage.open(data);
+            });
         const cardElement = card.generateCard();
         cardsGrid.addItem(cardElement);
     }
 }, cardsListSelector);
 
+function createCard(data, template, callback) {
+    return new Card (data, template, callback);
+}
 export function showEditProfile() {
-    const popup = new PopupWithForm(popupEditFormSelector, handleEditFormSubmit);
-    const userPage = new UserInfo(profileNameSelector, profileDescSelector);
-    popup.open();
-    popup.setEventListeners();
-    popup.setFieldsValues(userPage.getUserInfo()['userName'], userPage.getUserInfo()['userDescription']);
+    popupEditForm.open();
+    const info = [userPage.getUserInfo()['userName'], userPage.getUserInfo()['userDescription']];
+    popupEditForm.setFieldsValues(info);
   }
   
 export function handleEditFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInputEditForm.value;
     profileDesc.textContent = jobInputEditForm.value;
-    closePopupHandler(popupEditFormSelector);
+    popupEditForm.close();
 }
 
 function addNewCardSubmit(evt) {
@@ -45,39 +68,21 @@ function addNewCardSubmit(evt) {
     const data = {};
     data.text = nameInputNewPlaceForm.value;
     data.link = jobInputNewPlaceForm.value;
-    const newCard = new Card(data, '#card-item');
+    const newCard = new createCard(data, '#card-item', ()=>{});
     cardsList.prepend(newCard.generateCard());
-    closePopupHandler(popupNewPlaceFormSelector);
-}
-
-function closePopupHandler(modal){
-    document.querySelector(modal).classList.remove(popupOpenClass);
+    popupNewForm.close();
 }
 
 export function showAddCard() {
-    const popup = new PopupWithForm(popupNewPlaceFormSelector, addNewCardSubmit);
-    popup.open();
-    popup.setEventListeners();
+    popupNewForm.setFieldsValues(["", ""]);
+    popupNewForm.open();
 }
 
 function initValidation() {
-    const validationObj = { submitButtonSelector: '.popup__btn',
-                            inactiveButtonClass: 'popup__btn_inactive',
-                            inputErrorClass: 'popup__text-field_error',
-                            errorClass: 'popup__input-error_active',
-                            textFieldSelector:'.popup__text-field'};
-
-    const formList = Array.from(document.querySelectorAll('.popup__form'));
     formList.forEach((formElement) => {        
         formElement.addEventListener('submit', function (evt) {
         evt.preventDefault();
         });
-
-    const fieldsetList = Array.from(formElement.querySelectorAll('.popup__form-set'));
-    fieldsetList.forEach((fieldset)=>{
-            const validElem = new FormValidator(validationObj, fieldset)
-            validElem.enableValidation();
-        })
     })
 }
 
