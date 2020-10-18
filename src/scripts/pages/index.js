@@ -16,6 +16,7 @@ popupImage.setEventListeners();
 
 const popupEditForm = new PopupWithForm(popupEditFormSelector, handleEditFormSubmit);
 popupEditForm.setEventListeners();
+
 const userPage = new UserInfo(profileNameSelector, profileDescSelector);
 
 const popupNewForm = new PopupWithForm(popupNewPlaceFormSelector, addNewCardSubmit);
@@ -23,17 +24,11 @@ popupNewForm.setEventListeners();
 
 const formList = Array.from(document.querySelectorAll('.popup__form'));
 
-const editFormFields = Array.from(document.querySelector('.page__popup_edit-form').querySelectorAll('.popup__form-set'));
-editFormFields.forEach((fieldset)=>{
-        const validElem = new FormValidator(validationObj, fieldset)
-        validElem.enableValidation();
-    });
+const profileFormValidator = new FormValidator(validationObj, popupEditForm);
+profileFormValidator.enableValidation();
 
-const newFormFields = Array.from(document.querySelector('.page__popup_new-place').querySelectorAll('.popup__form-set'));
-newFormFields.forEach((fieldset)=>{
-        const validElem = new FormValidator(validationObj, fieldset)
-        validElem.enableValidation();
-    });
+const newFormValidator = new FormValidator(validationObj, popupNewForm);
+newFormValidator.enableValidation();
 
 const cardsGrid = new Section({
     items: initialCards,
@@ -42,13 +37,14 @@ const cardsGrid = new Section({
         const card = createCard(data, cardTemplateSelector, ()=>{
                 popupImage.open(data);
             });
-        const cardElement = card.generateCard();
-        cardsGrid.addItem(cardElement);
+        cardsGrid.addItem(card);
     }
 }, cardsListSelector);
 
 function createCard(data, template, callback) {
-    return new Card (data, template, callback);
+    let card = new Card (data, template, callback);
+    card = card.generateCard();
+    return card;
 }
 export function showEditProfile() {
     popupEditForm.open();
@@ -68,8 +64,8 @@ function addNewCardSubmit(evt) {
     const data = {};
     data.text = nameInputNewPlaceForm.value;
     data.link = jobInputNewPlaceForm.value;
-    const newCard = new createCard(data, '#card-item', ()=>{});
-    cardsList.prepend(newCard.generateCard());
+    const newCard = createCard(data, '#card-item', ()=>{});
+    cardsList.prepend(newCard);
     popupNewForm.close();
 }
 
@@ -78,16 +74,7 @@ export function showAddCard() {
     popupNewForm.open();
 }
 
-function initValidation() {
-    formList.forEach((formElement) => {        
-        formElement.addEventListener('submit', function (evt) {
-        evt.preventDefault();
-        });
-    })
-}
-
 cardsGrid.renderItems();
-initValidation();
 
 editButton.addEventListener('click', showEditProfile);
 addButton.addEventListener('click', showAddCard);

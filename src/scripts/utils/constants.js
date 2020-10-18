@@ -24,7 +24,7 @@ export const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-export const validationObj = { submitButtonSelector: '.popup__btn',
+export const validationObj = { submitButtonSelector: '.popup__btn_action_save',
                             inactiveButtonClass: 'popup__btn_inactive',
                             inputErrorClass: 'popup__text-field_error',
                             errorClass: 'popup__input-error_active',

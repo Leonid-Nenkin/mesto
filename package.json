@@ -33,10 +33,10 @@
     "style-loader": "^2.0.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.0.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "rimraf": "^3.0.2"
+    "core-js": "^3.6.5"
   }
 }

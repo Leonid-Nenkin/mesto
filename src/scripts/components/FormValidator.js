@@ -5,7 +5,7 @@ export default class FormValidator {
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
     this._textFieldSelector = data.textFieldSelector; 
-    this._element = element;
+    this._element = element._element;
   }
 
   enableValidation() {
