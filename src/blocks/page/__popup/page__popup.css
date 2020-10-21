@@ -1,6 +1,8 @@
 @import url('_type/page__popup_card-image.css');
 @import url('_type/page__popup_edit-form.css');
 @import url('_type/page__popup_new-place.css');
+@import url('_type/page__popup_submit.css');
+@import url('_type/page__popup_update-avatar.css');
 
 .page__popup {
   

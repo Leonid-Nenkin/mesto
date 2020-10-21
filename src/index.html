@@ -15,12 +15,16 @@
             <main class="content">
                 <section class="profile page__profile">
 
-                    <img class="profile__avatar" src='./images/avatar.png' alt = "аватар" />
+                    <div class="profile__avatar-container">
+                        <img class="profile__avatar" alt = "аватар" />
+                        <img class="profile__avatar-edit" src = './images/EditProfile.svg' alt="изменить" />
+                    </div>
+
                     <div class="profile__info">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <h1 class="profile__name"></h1>
                         <button class="profile__btn profile__btn_action_edit" type="button"></button>
                     </div>
-                    <p class="profile__description">Исследователь океана</p>
+                    <p class="profile__description"></p>
 
                     <button class="profile__btn profile__btn_action_add" type="button">
                     </button>
@@ -46,7 +50,10 @@
                     </div>
                     <div class="card__body">
                         <p class="card__text"></p>
-                        <button class="card__like card__like_inactive" type="button"></button>
+                        <div class="card__like-section">
+                            <button class="card__like card__like_inactive" type="button"></button>
+                            <span class = "card__like-counter"></span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -56,7 +63,7 @@
             <div class="popup__overlay popup__overlay_edit"></div>
             <div class="popup__container popup__container_form">
                 <button class="popup__btn popup__btn_action_close" type="button"></button>
-                <h3 class="popup__header">Редактировать профиль</h3>
+                <h3 class="popup__header popup__header_form">Редактировать профиль</h3>
                 <form class="popup__form" name="editProfile" novalidate>
                     <fieldset class="popup__form-set">
                         <label class="popup__form-field">
@@ -79,7 +86,7 @@
             <div class="popup__overlay popup__overlay_new-place"></div>
             <div class="popup__container popup__container_form">
                 <button class="popup__btn popup__btn_action_close" type="button"></button>
-                <h3 class="popup__header">Новое место</h3>
+                <h3 class="popup__header popup__header_form">Новое место</h3>
                 <form class="popup__form" name="addNewPlace" novalidate>
                     <fieldset class="popup__form-set">
                         <label class="popup__form-field">
@@ -103,6 +110,33 @@
                 <button class="popup__btn popup__btn_action_close" type="button"></button>
                 <img class="popup__image" alt="картинка" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"/>
                 <p class="popup__caption"></p>
+            </div>
+        </section>
+
+        <section class="popup page__popup_submit">
+            <div class="popup__overlay popup__overlay_submit"></div>
+            <div class="popup__container popup__container_form">
+                <button class="popup__btn popup__btn_action_close" type="button"></button>
+                <h3 class="popup__header popup__header_submit">Вы уверены?</h3>
+                <button class="popup__btn popup__btn_submit popup__btn_action_save" type="submit">Да</button>
+            </div>
+        </section>
+
+        <section class="popup page__popup_update-avatar">
+            <div class="popup__overlay popup__overlay_update-avatar"></div>
+            <div class="popup__container popup__container_form">
+                <button class="popup__btn popup__btn_action_close" type="button"></button>
+                <h3 class="popup__header popup__header_form">Обновить аватар</h3>
+                <form class="popup__form" name="updateAvatar" novalidate>
+                    <fieldset class="popup__form-set">
+                        <label class="popup__form-field">
+                            <input id="avatarLink-input" type="text" class="popup__text-field popup__text-field_description" placeholder="Ссылка" minlength="1" maxlength="3000" name="avatarLink" required>
+                            <span id="avatarLink-input-error" class="popup__input-error"></span>
+                        </label>
+
+                        <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
+                    </fieldset>
+                </form>
             </div>
         </section>
 
