@@ -56,6 +56,10 @@ export default class Card {
         this._toggleLike();
     }
 
+    removeCard() {
+        this._element.remove();
+    }
+
     _setEventListeners() {
         this._element.querySelector('.card__like').addEventListener('click', () => {this._handleLikeClick()});
         this._element.querySelector('.card__trashCan').addEventListener('click', (evt) => {this._handleTrashCanClick(evt)});
@@ -80,8 +84,6 @@ export default class Card {
     _handleTrashCanClick(evt) {
         evt.stopPropagation();
         this._handleDeleteIconClick(this);
-        //this._element.remove();
-        //this._element = null;
     }
 
     _handleImageClick() {

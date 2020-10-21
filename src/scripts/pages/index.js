@@ -41,13 +41,13 @@ const avatarValidator = new FormValidator(validationObj, popupAvatarForm);
 avatarValidator.enableValidation();
 
 let myId;
+let cardsGrid;
 const api = new Api(ApiConfig);
 
 const userInfo = api.getUserInfo();
 userInfo.then((res)=>{
-    profileName.textContent = res['name'];
-    profileDesc.textContent = res['about'];
-    profileAvatar.src = res['avatar'];
+    userPage.setUserInfo(res['name'], res['about']);
+    userPage.setAvatar(res['avatar']);
     myId = res['_id'];
 })
 .then(initializeCards())
@@ -56,7 +56,7 @@ userInfo.then((res)=>{
 function initializeCards() {
     api.getInitialCards()
     .then((data)=>{
-        const cardsGrid = new Section({
+            cardsGrid = new Section({
             items: data,
             renderer: (item)=>{
                 const data = {'text': item['name'],
@@ -102,7 +102,7 @@ function trashCanClick(card) {
     popupSubmit.setCallBack(()=>{
         api.deleteCard(card)
         .then(() => {
-            card._element.remove();
+            card.removeCard();
         })
         .then(popupSubmit.close())
         .catch((error) => console.log(error));
@@ -122,27 +122,30 @@ export function showEditProfile() {
 }
   
 export function handleEditFormSubmit(evt) {
+    preloaderOn(popupEditForm);
     evt.preventDefault();
     const data = {"name": nameInputEditForm.value, "about":jobInputEditForm.value};
     api.updateUserInfo(data)
     .then((data) => {
-        profileName.textContent = data.name;
-        profileDesc.textContent = data.about;    
+        userPage.setUserInfo(data['name'], data['about']);
+    })
+    .then(()=>{
+        preloaderOff(popupEditForm);
+        popupEditForm.close();
     })
     .catch((err)=>console.log(err));
-    popupEditForm.close();
+    
 }
 
 function handleAvatarClick(evt) {
     evt.preventDefault();
-    console.log(avatarImageLink);
     const data = {"avatar": avatarImageLink.value}
     api.updateAvatar(data)
     .then((res)=>{
-        avatar.querySelector('.profile__avatar').src = res['avatar'];
+        userPage.setAvatar(res['avatar']);
     })
+    .then(()=>{popupAvatarForm.close();})
     .catch((err)=>console.log(err));
-    popupAvatarForm.close();
 }
 
 function addNewCardSubmit(evt) {
@@ -171,7 +174,7 @@ function addNewCardSubmit(evt) {
                     }
         };
         const newCard = createCard(data, '#card-item');
-        cardsList.prepend(newCard);
+        cardsGrid.prependItem(newCard);
         preloaderOff(popupNewForm);
         popupNewForm.close();
     })
