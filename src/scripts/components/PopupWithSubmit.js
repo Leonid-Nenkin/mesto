@@ -6,7 +6,6 @@ export default class PopupWithSubmit extends Popup {
     super(cardSelector);
     this._submitCallBack = submitCallBack;
     this._submitButton = this._element.querySelector(formSubmitButton);
-    this._submitButton.addEventListener('click', this._submitCallBack);
   }
 
   setEventListeners() {
@@ -16,7 +15,7 @@ export default class PopupWithSubmit extends Popup {
 
   setCallBack(callback) {
     this._submitCallBack = callback;
-    this._element.addEventListener('submit', this._submitCallBack);
+    this._element.addEventListener("submit", this._submitCallBack);
     this._submitButton.addEventListener('click', this._submitCallBack);
   }
 }

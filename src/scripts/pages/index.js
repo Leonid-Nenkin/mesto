@@ -4,9 +4,8 @@ import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithSubmit from '../components/PopupWithSubmit.js';
 import UserInfo from '../components/UserInfo.js';
-import {editButton, addButton, profileName,
-        profileDesc, profileAvatar, nameInputEditForm, jobInputEditForm, 
-        nameInputNewPlaceForm,jobInputNewPlaceForm, cardsList, cardsListSelector, formSubmitButton,
+import {editButton, addButton, nameInputEditForm, jobInputEditForm, 
+        nameInputNewPlaceForm,jobInputNewPlaceForm, cardsListSelector, formSubmitButton,
         cardTemplateSelector, popupImageSelector,popupEditFormSelector, popupNewPlaceFormSelector,
         popupAvatarFormSelector, profileNameSelector, profileDescSelector, validationObj, ApiConfig,
         submitPopupSelector, avatarImageLink, avatar} from '../utils/constants.js';
@@ -50,7 +49,7 @@ userInfo.then((res)=>{
     userPage.setAvatar(res['avatar']);
     myId = res['_id'];
 })
-.then(initializeCards())
+.then(initializeCards)
 .catch((error) => console.log(error));
 
 function initializeCards() {
@@ -98,7 +97,6 @@ function likeClick(card) {
 }
 
 function trashCanClick(card) {
-    popupSubmit.open();
     popupSubmit.setCallBack(()=>{
         api.deleteCard(card)
         .then(() => {
@@ -106,7 +104,8 @@ function trashCanClick(card) {
         })
         .then(popupSubmit.close())
         .catch((error) => console.log(error));
-    });
+        });
+    popupSubmit.open();
 }
 
 function createCard(data, template) {
@@ -130,10 +129,10 @@ export function handleEditFormSubmit(evt) {
         userPage.setUserInfo(data['name'], data['about']);
     })
     .then(()=>{
-        preloaderOff(popupEditForm);
         popupEditForm.close();
     })
-    .catch((err)=>console.log(err));
+    .catch((err)=>console.log(err))
+    .finally(()=>{preloaderOff(popupEditForm)});
     
 }
 
@@ -175,10 +174,10 @@ function addNewCardSubmit(evt) {
         };
         const newCard = createCard(data, '#card-item');
         cardsGrid.prependItem(newCard);
-        preloaderOff(popupNewForm);
         popupNewForm.close();
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(error))
+    .finally(()=>{preloaderOff(popupNewForm)});
 }
 
 function preloaderOn(form) {
